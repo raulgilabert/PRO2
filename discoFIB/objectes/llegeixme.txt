@@ -1,0 +1,11 @@
+Els fitxers .o d'aquesta carpeta han estat compilats amb p2++
+(incloent l'opcio -D_GLIBCXX_DEBUG) en el linux per defecte de la FIB,
+que es de 64 bits
+
+Si són incompatibles amb el vostre sistema o compilador de c++, haureu
+d'obtenir els vostres propis fitxers .o compilant normalment els .cc
+de la subcarpeta SOS.
+
+Una prova definitiva d'aquesta incompatibilitat és si teniu un
+programa amb la classe Estudiant que compila i linka correctament
+al linux de la FIB i compila però no linka correctamente a la vostra màquina.

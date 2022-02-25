@@ -1,5 +1,8 @@
 #include <iostream>
+#include <vector>
 #include <algorithm>
+
+#include "matrix.hh"
 
 using namespace std;
 
@@ -7,20 +10,13 @@ using namespace std;
 //
 // Identificador | Puntos | Goles a favor | Goles en contra
 
-struct team {
-    int id, points, scored_goals, received_goals;
-};
-
-typedef vector<team> teams;
-
-
 teams create_matrix(const Matrix& goals) {
     int rows = goals.size();
 
     teams data(rows);
 
     for (int i = 1; i <= rows; ++i)
-	data[i].id = i;
+	data[i - 1].id = i;
 
     return data;
 }
@@ -29,19 +25,19 @@ teams create_matrix(const Matrix& goals) {
 bool cmp(team& a, team& b) {
     if (a.points != b.points)
 	return (a.points > b.points);
-    else 
+    else { 
 	int a_diff = a.scored_goals - a.received_goals, 
 	    b_diff = b.scored_goals - b.received_goals;
 
 	if (a_diff != b_diff)
 	    return (a_diff > b_diff);
 	else
-	    return (a.id > b.id);
-	    
+	    return (a.id < b.id);	    
+    }
 }
 
 
-MatrixInt calc_points(const Matrix& goals, teams& points) {
+void calc_points(const Matrix& goals, teams& points) {
     int rows = goals.size(), columns = goals[0].size();
 
     for (int i = 0; i < rows; ++i) {
@@ -79,9 +75,10 @@ MatrixInt calc_points(const Matrix& goals, teams& points) {
 
 
 int main() {
-    Matrix data = read_matrix();
+    Matrix data;
+    read_matrix(data);
 
     teams points = create_matrix(data);
     calc_points(data, points);
-    print_matrix(points);
+    print(points);
 }
