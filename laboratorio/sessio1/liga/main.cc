@@ -2,9 +2,51 @@
 #include <vector>
 #include <algorithm>
 
-#include "matrix.hh"
-
 using namespace std;
+
+struct match {
+    int local, visitant;
+};
+
+typedef vector<vector<match> > Matrix;
+
+struct team {
+    int id, points, scored_goals, received_goals;
+};
+
+typedef vector<team> teams;
+
+
+void read_matrix(Matrix& m);
+// Pre: text input of integers N and M and N*M*2 integers
+// Post: matrix N*M of pairs woth the integers received
+
+void print(const teams& m);
+// Pre: matrix of integers of 4 columns of size
+// Post: the matrix printed
+
+void read_matrix(Matrix& m) {
+    int rows;
+
+    cin >> rows;
+
+    m = Matrix(rows, vector<match>(rows));
+
+    for (int i = 0; i < rows; ++i) {
+	for (int j = 0; j < rows; ++j) {
+	    cin >> m[i][j].local >> m[i][j].visitant;
+	}
+    }
+}
+
+void print(const teams& m) {
+    int rows = m.size();
+
+    for (int i = 0; i < rows; ++i) {
+	cout << m[i].id << ' ' << m[i].points << ' ' << m[i].scored_goals << 
+	    ' ' << m[i].received_goals << endl;
+    }
+}
 
 // Formato de impresión de datos:
 //
