@@ -18,11 +18,11 @@ Los parciales son a papel
 
 ## Temario
 
-- Diseño modular
-- Estructuras de datos lineales
-  - Colas
-  - Listas
-  - Otros
+- Diseño modular  **OK**
+- Estructuras de datos lineales  **OK**
+  - Colas  **OK**
+  - Listas  **OK**
+  - Otros  **OK**
 - Estructuras de datos arborescentes
   - Árboles binarios
   - Árboles n-arios
@@ -322,8 +322,26 @@ v = *it;   // sigue bien
 *it = v+3; // prohibido
 ```
 
-// Mirar splice
+Las listas también tienen ina función `splice` a la que se le da un iterador y
+una lista de elementos e inserta en la lista en la que se llama la función los
+elementos de la lista que se le pasa hasta la posición marcada por el iterador.
 
 Las listas permiten el uso de `push_back()`, `push_front()`, `pop_back()` y
 `pop_front()` para añadir o eliminar elementos al inicio o al final, de forma
 que no hace falta pasar un iterador.
+
+## Árboles
+
+Un árbol es una estructura de datos en la que los elementos están organizados
+en forma de nodos en un sistema de padres e hijos. Entre estos elementos se
+cumple la propiedad de haber un único camino entre dos nodos específicos y que
+el coste de las operaciones es constante.
+
+Un árbol n-arios es una estructura arborescente en la que cada nodo tiene n
+hijos.
+
+### Árboles binarios
+
+Es un árbol n-ario de 2 hijos por elemento. Un árbol binario no tiene
+operaciones modificadoras, de forma que si se quiere modificar uno, hay que
+crear uno nuevo.
