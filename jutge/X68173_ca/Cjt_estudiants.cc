@@ -1,9 +1,11 @@
 #include "Cjt_estudiants.hh"
+#include "Estudiant.hh"
 #include <algorithm>
 
 Cjt_estudiants::Cjt_estudiants() {
   nest = 0;
   vest = vector<Estudiant>(MAX_NEST);
+  imax = -1;
 }
   
 Cjt_estudiants::~Cjt_estudiants() {}
@@ -24,6 +26,8 @@ void Cjt_estudiants::afegir_estudiant(const Estudiant& est) {
   // si no, i=-1 
   vest[i+1] = est;
   ++nest;
+
+  recalcular_posicio_imax();
 }
 
 int Cjt_estudiants::cerca_dicot(const vector<Estudiant>& vest, int left, int right, int x) {
@@ -41,16 +45,30 @@ int Cjt_estudiants::cerca_dicot(const vector<Estudiant>& vest, int left, int rig
   else return -1;  
 }  
 
+void Cjt_estudiants::recalcular_posicio_imax() {
+    imax = -1;
+
+    for (int i = 0; i < nest; ++i) {
+	if (vest[i].te_nota() and (imax == -1 or vest[i].consultar_nota() > 
+		    vest[imax].consultar_nota()))
+	    imax = i;
+    }
+}
+
 void Cjt_estudiants::modificar_estudiant(const Estudiant& est) {
   /* Pre: existeix un estudiant al parametre implicit amb el dni d'est  */
   int x = est.consultar_DNI();
   int i = cerca_dicot(vest,0,nest-1,x);
   vest[i] = est;
+
+  recalcular_posicio_imax();
 }    
   		
 void Cjt_estudiants::modificar_iessim(int i, const Estudiant& est) {
   if (i < 1 or i > nest) throw PRO2Excepcio("Index no valid per a modificar_iessim");
   vest[i-1] = est;
+
+  recalcular_posicio_imax();
 }
   
 int Cjt_estudiants::mida() const {
@@ -76,7 +94,7 @@ Estudiant Cjt_estudiants::consultar_iessim(int i) const {
   return vest[i-1];
 }
 
-bool Cjt_estudiants::comp(const Estudiant& e1, const Estudiant& e2){
+bool comp(const Estudiant& e1, const Estudiant& e2){
   return (e1.consultar_DNI() < e2.consultar_DNI());
 }
 
@@ -97,3 +115,26 @@ void Cjt_estudiants::escriure() const {
   for (int i = 0; i < nest; ++i)
     vest[i].escriure();
 }
+
+void Cjt_estudiants::esborrar_estudiant(int dni) {
+    int i = 0;
+    while (vest[i].consultar_DNI() < dni) {
+	++i;
+    }
+
+    Estudiant est;
+    vest[i] = est;
+
+    ++i;
+
+    while (i < nest) {
+	vest[i-1] = vest[i];
+    }
+
+    recalcular_posicio_imax();
+}
+
+Estudiant Cjt_estudiants::estudiant_nota_max() const {
+    return vest[imax];
+}
+

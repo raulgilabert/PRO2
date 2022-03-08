@@ -14,11 +14,13 @@ class Estudiant {
 private:
   int dni;
   double nota;
+  
   static const int MAX_NOTA = 10;
   /*
     Invariant de la representacio:
     - 0 <= dni
-    - 0 <= nota <= MAX_NOTA o nota = -1
+    - (escriu aqui la part que falta del nou invariant):
+
   */
     
 public:
@@ -31,18 +33,17 @@ public:
   Estudiant(int dni);
   /* Pre: dni >= 0 */
   /* Post: el resultat es un estudiant amb DNI = dni i sense nota */
-    
-  // Destructora: esborra automaticament els objectes locals en sortir
-  // d'un ambit de visibilitat
 
   Estudiant(const Estudiant& e);
   /* Pre: cert */
-  /* Post: El resultat es un estudiant not, copia d'est */
-
-  ~Estudiant();
-    
+  /* Post: el resultat es un estudiant copia d'e */
+  
   //Modificadores
-    
+
+  void operator=(const Estudiant& est);
+  /* Pre: cert */
+  /* Post: el p.i. passa a ser una copia de est */
+   
   void afegir_nota(double nota);
   /* Pre: el parametre implicit no te nota, 0 <= "nota" <= nota_maxima() */
   /* Post: la nota del parametre implicit passa a ser "nota" */
@@ -68,6 +69,11 @@ public:
   bool te_nota()  const;
   /* Pre: cert  */
   /* Post: el resultat indica si el parametre implicit te nota o no */
+
+  static bool comp(const Estudiant& e1, const Estudiant& e2);
+  /* Pre: cert  */
+  /* Post: el resultat indica si e1 te dni mes petit que e2 */
+
   
   // Lectura i escriptura
     
@@ -82,12 +88,5 @@ public:
   /* Pre: cert */
   /* Post: s'han escrit els atributs del parametre implicit
      al canal estandard de sortida; si no te nota escriu "NP" */
-
-  // Operators
-
-  void operator=(const Estudiant& est);
-  /* Pre: cert */
-  /* Post: el p.i. passa a ser una copia de est */
-
 };
 #endif

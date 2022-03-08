@@ -14,11 +14,12 @@ class Estudiant {
 private:
   int dni;
   double nota;
+  bool amb_nota;
   static const int MAX_NOTA = 10;
   /*
     Invariant de la representacio:
     - 0 <= dni
-    - 0 <= nota <= MAX_NOTA o nota = -1
+    - si amb_nota, llavors 0 <= nota <= MAX_NOTA
   */
     
 public:
@@ -34,11 +35,7 @@ public:
     
   // Destructora: esborra automaticament els objectes locals en sortir
   // d'un ambit de visibilitat
-
-  Estudiant(const Estudiant& e);
-  /* Pre: cert */
-  /* Post: El resultat es un estudiant not, copia d'est */
-
+    
   ~Estudiant();
     
   //Modificadores
@@ -82,12 +79,5 @@ public:
   /* Pre: cert */
   /* Post: s'han escrit els atributs del parametre implicit
      al canal estandard de sortida; si no te nota escriu "NP" */
-
-  // Operators
-
-  void operator=(const Estudiant& est);
-  /* Pre: cert */
-  /* Post: el p.i. passa a ser una copia de est */
-
 };
 #endif

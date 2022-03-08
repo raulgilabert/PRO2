@@ -25,7 +25,10 @@ Estudiant::Estudiant(const Estudiant& est)
     nota = est.nota;
 }
 
-Estudiant::~Estudiant(){}
+void Estudiant::operator=(const Estudiant& est) {
+    dni = est.dni;
+    nota = est.nota;
+}
 
 void Estudiant::afegir_nota(double nota)
 {
@@ -67,6 +70,10 @@ double Estudiant::nota_maxima()
   return MAX_NOTA;
 }
 
+bool Estudiant::comp(const Estudiant &e1, const Estudiant &e2) {
+    return e1.consultar_DNI() < e2.consultar_DNI();
+}
+
 void Estudiant::llegir()
 {
   cin >> dni;
@@ -86,9 +93,3 @@ void Estudiant::escriure() const
   else
     cout << dni <<" NP" << endl;
 }
-
-void Estudiant::operator=(const Estudiant& est) {
-    dni = est.dni;
-    nota = est.nota;
-}
-

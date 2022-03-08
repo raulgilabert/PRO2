@@ -6,9 +6,9 @@ Estudiant redondear_e_f(const Estudiant& est)
 /* Pre: est tiene nota */
 /* Post: el resultado es un estudiante como est pero con la nota redondeada */
 {
-  Estudiant est2(est.consultar_DNI());
+  Estudiant est2(est);
   double notaR = ((int) (10.0 * (est.consultar_nota() + 0.05))) / 10.0;
-  est2.afegir_nota(notaR);
+  est2.modificar_nota(notaR);
   return est2;
 }
 

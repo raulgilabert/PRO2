@@ -6,54 +6,50 @@ const char *ER1 = "No te nota";
 const char *ER2 = "Valor de la nota entre 0 a 10";
 const char *ER3 = "Ja te nota";
 const char *ER4 = "El DNI es incorrecte";
+#include <exception>
 
 Estudiant::Estudiant(){
   dni=0;
-  nota = -1;
+  amb_nota = false;
 }
 
-Estudiant::Estudiant(int dni)
+Estudiant::Estudiant(int d)
 {
-  if (dni<0) throw PRO2Excepcio(ER4);
-  this->dni = dni;
-  nota = -1;
-}
-
-Estudiant::Estudiant(const Estudiant& est)
-{
-    dni = est.dni;
-    nota = est.nota;
+  if (d<0) throw PRO2Excepcio(ER4);
+  this->dni = d;
+  amb_nota = false;
 }
 
 Estudiant::~Estudiant(){}
 
-void Estudiant::afegir_nota(double nota)
+void Estudiant::afegir_nota(double x)
 {
-  if (this->nota != -1) 
+  if (amb_nota) 
     throw PRO2Excepcio(ER3);
-  if (nota<0 or nota>MAX_NOTA)
+  if (x<0 or x>MAX_NOTA)
     throw PRO2Excepcio(ER2); 
   
-  this->nota = nota; 
+  this->nota = x; 
+  amb_nota = true;
 }
 
-void Estudiant::modificar_nota(double nota)
+void Estudiant::modificar_nota(double x)
 { 				
-  if (this->nota == -1) 
+  if (not amb_nota) 
     throw PRO2Excepcio(ER1);
-  if (nota<0 or nota>MAX_NOTA)
+  if (x<0 or x>MAX_NOTA)
     throw PRO2Excepcio(ER2);
-  this->nota = nota;
+  this->nota = x;
 }
 
 bool Estudiant::te_nota() const
 {
-  return nota != -1;
+  return amb_nota;
 }
 
 double Estudiant::consultar_nota() const
 {
-  if (nota == -1) throw PRO2Excepcio(ER1);
+  if (not amb_nota) throw PRO2Excepcio(ER1);
   return nota;
 }
 
@@ -75,20 +71,15 @@ void Estudiant::llegir()
   cin >> x;
   if (x >= 0 and x <= MAX_NOTA) {
     nota = x; 
+    amb_nota = true;
   }
-  else nota = -1;
+  else amb_nota = false;
 }
 
 void Estudiant::escriure() const
 {
-  if (nota != -1)
+  if (amb_nota)
     cout << dni << " " << nota << endl;
   else
     cout << dni <<" NP" << endl;
 }
-
-void Estudiant::operator=(const Estudiant& est) {
-    dni = est.dni;
-    nota = est.nota;
-}
-

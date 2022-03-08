@@ -187,6 +187,12 @@ void Estudiante::leer() {
 }
 ```
 
+#### Uso de `this`
+
+La utilidad de usar `this->` es poder diferenciar entre un parámetro y una
+variable de la parte privada de la clase. Si no pasa esto no es necesario su
+uso.
+
 ### Mecanismos para añadir funcionalidades
 
 - Modificar la clase:
