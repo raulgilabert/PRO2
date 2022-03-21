@@ -23,9 +23,9 @@ Los parciales son a papel
   - Colas  **OK**
   - Listas  **OK**
   - Otros  **OK**
-- Estructuras de datos arborescentes
-  - Árboles binarios
-  - Árboles n-arios
+- Estructuras de datos arborescentes **OK**
+  - Árboles binarios **OK**
+  - Árboles n-arios **OK**
 - Diseño iterativo (verificación)
 - Diseño recursivo (verificación)
 - Mejora eficiencia de programas iterativos y recursivos
@@ -81,8 +81,8 @@ class lista_palabras {
 }
 ```
 
-La parte privada (```private```) no es accesible desde el exterior de la clase.
-En cambio la pública (```public```) sí.
+La parte privada (`private`) no es accesible desde el exterior de la clase.
+En cambio la pública (`public`) sí.
 
 Una vez declarada puede ser usada como un tipo de datos (uso como operación
 constructora) y utlizar las funciones públicas de esta.
@@ -345,3 +345,71 @@ hijos.
 Es un árbol n-ario de 2 hijos por elemento. Un árbol binario no tiene
 operaciones modificadoras, de forma que si se quiere modificar uno, hay que
 crear uno nuevo.
+
+#### Calcular el tamaño de un árbol
+
+(Lo escribiré después)
+
+```C++
+int size(const BinTree& tree) { 
+}
+```
+
+#### Recorrudo en profundidad
+
+##### Preorden
+
+1. Se visita la raíz
+2. Se visita el hijo izquierdo
+3. Se visita el hijo derecho
+
+##### Inorden
+
+1. Se visita el hijo izquierdo
+2. Se visita la raíz
+3. Se visita el hijo derecho
+
+##### Postorden
+
+1. Visita el hijo izquierdo
+2. Visita el hijo derecho
+3. Visita la raíz
+
+##### Por niveles/en anchura
+
+La visita se da por niveles, visitando todos los nodos de un nivel i y al
+acabar se pasa al nivel i + 1.
+
+## Diseño iterativo: verificación y derivación
+
+### Corrección de un programa
+
+El estado de un programa en un punto determinado es el valor de las variables
+activas en ese mismo punto.
+
+Si el estado inicial del programa satisface la precondición entonces este
+acaba en un número finito de pasos y el estado final satisface la
+postcondición.
+
+Para que un programa sea correcto este tiene que, primero de todo, acabar.
+
+#### Razonamiento sobre los programas
+
+Lo que hacer es comentar el programa con aserciones que describan los
+diferentes puntos de este.
+
+##### Bucles
+
+Hay que razonar si el bucle termina. Esto se demuestra con una función *f* de
+cota que da la cantidad máxima de iteraciones que queda.
+
+0. Se inventa un invariante y una función de cota.
+1. Se inicializa el bucle con el invarainte
+2. Se comprueba que si se cumple el invariante en la entrada y la salida, al
+acabar cada iteración también pasa.
+3. El invariante y la negación de la condición de entrada implican la
+postcondición.
+4. La función de cota decrece en cada iteración.
+5. Si se entra una vez más al bucle la función de cota es estríctamente
+positiva.
+
