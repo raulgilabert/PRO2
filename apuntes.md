@@ -18,7 +18,7 @@ Los parciales son a papel
 
 ## Temario
 
-- Diseño modular  **OK**
+- [Diseño modular](#diseño-modular)  **OK**
 - Estructuras de datos lineales  **OK**
   - Colas  **OK**
   - Listas  **OK**
@@ -413,3 +413,33 @@ postcondición.
 5. Si se entra una vez más al bucle la función de cota es estríctamente
 positiva.
 
+// Ver el temario del grupo 30 del tema
+
+
+
+
+## Diseño recursivo
+
+La idea básica de una definición inductiva es es que para algunos casos básicos
+se define la función directamente y para el resto de los casos se define en
+base a elementos **más pequeños**. Hay funciones de descomposición que permiten
+obtener esos elementos más pequeños.
+
+Ejemplo:
+
+```
+Factorial: n! = 1*2*...*(n-1)*n
+
+1. Caso base: n = 0
+2. El factorial se define a partir del factorial de n-1
+3. La función se descompone en n-1
+```
+
+// Ver terminación de funciones recursivas
+
+### Inmersión
+
+#### Inmersión de una función en otra
+
+Una inmersión de una función *f* es la definición de una función *g* con más
+parámetros y que generaliza *f*
