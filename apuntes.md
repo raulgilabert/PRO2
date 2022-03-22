@@ -19,15 +19,16 @@ Los parciales son a papel
 ## Temario
 
 - [Diseño modular](#diseño-modular)  **OK**
-- Estructuras de datos lineales  **OK**
-  - Colas  **OK**
-  - Listas  **OK**
-  - Otros  **OK**
-- Estructuras de datos arborescentes **OK**
-  - Árboles binarios **OK**
+- [Estructuras de datos lineales](#estructuras-lineales)  **OK**
+  - [Pilas](#clase-stack)
+  - [Colas](#clase-queue)  **OK**
+  - [Listas](#clase-list)  **OK**
+- [Estructuras de datos arborescentes](#árboles) **OK**
+  - [Árboles binarios](#árboles-binarios) **OK**
   - Árboles n-arios **OK**
-- Diseño iterativo (verificación)
-- Diseño recursivo (verificación)
+- [Diseño iterativo (verificación)](#diseño-iterativo-verificación-y-derivació ) 
+**OK**
+- [Diseño recursivo (verificación)](#diseño-recursivo) **OK**
 - Mejora eficiencia de programas iterativos y recursivos
 - Estructuras de datos recursivas (cómo se implementan las estructuras lineales
 y arborescentes)
