@@ -26,7 +26,7 @@ Los parciales son a papel
 - [Estructuras de datos arborescentes](#árboles) **OK**
   - [Árboles binarios](#árboles-binarios) **OK**
   - Árboles n-arios **OK**
-- [Diseño iterativo (verificación)](#diseño-iterativo-verificación-y-derivació ) 
+- [Diseño iterativo (verificación)](#diseño-iterativo-verificación-y-derivación)
 **OK**
 - [Diseño recursivo (verificación)](#diseño-recursivo) **OK**
 - Mejora eficiencia de programas iterativos y recursivos
