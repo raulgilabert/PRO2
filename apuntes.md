@@ -20,7 +20,7 @@ Los parciales son a papel
 
 - [Diseño modular](#diseño-modular)  **OK**
 - [Estructuras de datos lineales](#estructuras-lineales)  **OK**
-  - [Pilas](#clase-stack)
+  - [Pilas](#clase-stack) **OK**
   - [Colas](#clase-queue)  **OK**
   - [Listas](#clase-list)  **OK**
 - [Estructuras de datos arborescentes](#árboles) **OK**
@@ -30,8 +30,10 @@ Los parciales son a papel
 **OK**
 - [Diseño recursivo (verificación)](#diseño-recursivo) **OK**
 - Mejora eficiencia de programas iterativos y recursivos
+- Punteros
 - Estructuras de datos recursivas (cómo se implementan las estructuras lineales
 y arborescentes)
+
 
 ---
 
@@ -414,9 +416,6 @@ postcondición.
 5. Si se entra una vez más al bucle la función de cota es estríctamente
 positiva.
 
-// Ver el temario del grupo 30 del tema
-
-
 
 
 ## Diseño recursivo
@@ -443,4 +442,87 @@ Factorial: n! = 1*2*...*(n-1)*n
 #### Inmersión de una función en otra
 
 Una inmersión de una función *f* es la definición de una función *g* con más
-parámetros y que generaliza *f*
+parámetros y que generaliza *f*.
+
+Un algoritmo recursivo es lineal si cada llamada hace una única llamada
+recursiva. Una llamada recursiva lineal es final si el elemento generado en la
+última llamada es el mismo devuelto al final del todos los `return`.
+
+## Diccionarios
+
+Un diccionario es una estructura de datos que permite asociar la información de
+un conjunto de datos en bas ea una clave. Estos se aplican usando la clase
+`map`. En el caso de querer almacenar la información de una persona en base a
+su DNI se haría de la siguiente manera:
+
+```C++
+#include <map>
+
+using namespace std;
+
+struct info_persona {
+    double edad;
+    double peso;
+    string nombre;
+}
+
+map<int, info_persona> dict;
+```
+
+De esta manera se ve que el tipo de dato de la clave se coloca en el primer
+espacio para parámetros y el conjunto de datos en el segundo.
+
+Para acceder a los datos de un `map` se hace de la siguiente manera:
+`dict[x].dato`, siendo `dict` el `map`, `x` el elemento clave y `dato` el dato
+al que se quiere acceder.
+
+### Recorrido de diccionarios
+
+Un diccionario se recorre como si fuese una lista, haciendo que en cada
+iteración se obtenga un elemento `pair<K, D>`, siendo `K` la clave y `D` los
+datos.
+
+## Punteros
+
+
+
+
+
+
+
+## Mejora de eficiencia de algoritmos
+
+// Tengo que escribir mucho y me faltan punteros
+
+
+
+
+## Implementación de las estructuras de datos
+
+### Pilas
+
+Tiene un struct con un campo `info` de tipo `T` y un puntero al siguiente nodo.
+Un entero que guarda la altura y un puntero al primer elemento.
+
+#### Constructora
+
+La constructora de las pilas pone la altura a 0 y el puntero apunta a un
+`nullptr` ya que todavía no tiene elementos. La constructora de copia de la
+estructura podría ser como el siguiente caso:
+
+```C++
+stack(const stack& P) {
+    altura = P.altura
+    primero = P.primero
+}
+```
+
+El problema con esta constructora es que los nodos se comparten entre la
+copiada y la copia. La verdadera forma de hacerlo funcionar es creando primero
+una copia completa de P y depués de eso colocar el puntero al primer elemento.
+
+#### Destructora
+
+Elimina todos los elementos de la estructura recorriendo a travñes de los
+punteros.
+
